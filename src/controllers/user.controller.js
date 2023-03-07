@@ -1,16 +1,18 @@
 const { generateToken } = require('../utils/token');
 const userService = require('../services/user.service');
 
-const login = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await userService.login(email, password);
-  if (!user) {
-    return res.status(400).json({ message: 'Invalid fields' });
+const createUser = async (req, res) => {
+  const { displayName, email, password, image } = req.body;
+  try {
+  const response = await userService.createUser(displayName, email, password, image);
+  if (response.status) return res.status(409).json({ message: response.message });
+  const token = generateToken({ response });
+  res.status(201).json({ token });
+  } catch (e) {
+    res.status(e.status).json({ message: e.message });
   }
-  const token = generateToken({ user });
-  res.status(200).json({ token });
 };
 
 module.exports = {
-  login,
+  createUser,
 };

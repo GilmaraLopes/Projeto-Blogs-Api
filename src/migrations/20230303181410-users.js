@@ -9,19 +9,19 @@ module.exports = {
           autoIncrement: true, 
           type: Sequelize.INTEGER 
         },
-        display_name: {
-        allowNull: false,
-        unique: true,
-        type: Sequelize.STRING
+        displayName: {
+          allowNull: false,
+          type: Sequelize.STRING,
+          field: 'display_name',
         },
         email: {
-        allowNull: false,
-        unique: true,
-        type: Sequelize.STRING
+          allowNull: false,
+          unique: true,
+          type: Sequelize.STRING
         },
         password: {
-        allowNull: false,
-        type: Sequelize.STRING
+          allowNull: false,
+          type: Sequelize.STRING
         },
         image: {
         type: Sequelize.STRING

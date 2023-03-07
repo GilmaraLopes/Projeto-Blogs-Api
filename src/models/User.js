@@ -5,7 +5,7 @@ const User = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    display_name: DataTypes.STRING,
+    displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
@@ -13,6 +13,7 @@ const User = (sequelize, DataTypes) => {
   {
     tableName: 'users',
     timestamps: false,
+    underscored: true,
   });
 
   return user;
