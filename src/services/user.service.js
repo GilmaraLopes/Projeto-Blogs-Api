@@ -16,7 +16,18 @@ const getUser = async () => {
   return users;
 };
 
+const getUserById = async (id) => {
+  const user = await User.findOne({
+    where: { id },
+    attributes: { exclude: ['password'] },
+  });
+  if (!user) throw error(404, 'User does not exist');
+
+  return user;
+};
+
   module.exports = {
     createUser,
     getUser,
+    getUserById,
 };
