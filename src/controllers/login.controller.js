@@ -1,9 +1,9 @@
 const { generateToken } = require('../utils/token');
-const userService = require('../services/user.service');
+const loginService = require('../services/login.service');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await userService.login(email, password);
+  const user = await loginService.login(email, password);
   if (!user) {
     return res.status(400).json({ message: 'Invalid fields' });
   }
